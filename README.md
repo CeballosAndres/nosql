@@ -33,10 +33,11 @@ docker exec -it redis-db sh
 python3 -m venv env
 
 # Select virtual environment
-source env/bin/activate
+source env/bin/activate # on macOS
+.\env\Scripts\activate  # on Windows
 
 #Install dependencies
-python -m pip install redis PyMySql
+python -m pip install redis mysql-connector-python
 
 # Test connections
 python test_connections.py
