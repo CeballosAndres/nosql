@@ -6,7 +6,7 @@
 # On macOS
 brew cask install docker
 ```
-Others SO [How to ](https://gist.github.com/rstacruz/297fc799f094f55d062b982f7dac9e41)
+Other OS [How to ](https://gist.github.com/rstacruz/297fc799f094f55d062b982f7dac9e41)
 
 ## Run docker-compose
 
@@ -36,7 +36,7 @@ python3 -m venv env
 
 # Select virtual environment
 source env/bin/activate # on macOS
-.\env\Scripts\activate  # on Windows
+# on Windows .\env\Scripts\activate  
 
 #Install dependencies
 python -m pip install -r requirements.txt
@@ -46,4 +46,7 @@ python -m pip install -r requirements.txt
 ```bash
 # Test connections
 python test_connections.py
+
+# Fill redis
+python fill_redis.py
 ```
