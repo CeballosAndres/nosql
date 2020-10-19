@@ -12,7 +12,7 @@ brew cask install docker
 # Create
 docker-compose up -d
 
-## Recreate
+# Recreate
 docker-compose up -d --force-recreate
 ```
 
@@ -37,7 +37,7 @@ source env/bin/activate # on macOS
 .\env\Scripts\activate  # on Windows
 
 #Install dependencies
-python -m pip install redis mysql-connector-python
+python -m pip install -r requirements.txt
 
 # Test connections
 python test_connections.py
