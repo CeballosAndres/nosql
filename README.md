@@ -1,10 +1,12 @@
+# Redis vs mySQL
+
 ## Install docker
 
 ```bash
 # On macOS
 brew cask install docker
 ```
-
+Others SO [How to ](https://gist.github.com/rstacruz/297fc799f094f55d062b982f7dac9e41)
 
 ## Run docker-compose
 
@@ -16,7 +18,7 @@ docker-compose up -d
 docker-compose up -d --force-recreate
 ```
 
-## Access data base
+## Access database
 
 ```bash
 #MySQL
@@ -38,7 +40,10 @@ source env/bin/activate # on macOS
 
 #Install dependencies
 python -m pip install -r requirements.txt
+```
+## Test
 
+```bash
 # Test connections
 python test_connections.py
 ```
