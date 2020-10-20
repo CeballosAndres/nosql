@@ -7,7 +7,7 @@ client = redis.Redis(
         port = 6379
         )
 
-reg = 100_000
+reg = 1_000_000
 percent = reg / 10
 
 start_time = time.time()

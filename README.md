@@ -47,6 +47,10 @@ python -m pip install -r requirements.txt
 # Test connections
 python test_connections.py
 
+# Run redis benchmark
+docker exec -it redis-db redis-benchmark -q -n 100000
+
+
 # Fill redis
 python fill_redis.py
 ```
