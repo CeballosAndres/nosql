@@ -1,17 +1,14 @@
 import redis
 import time 
 
-# connect to redis
-client = redis.Redis(
-        host = 'localhost',
-        port = 6379
-        )
-
 reg = 1_000_000
 percent = reg / 10
 
+# connect to redis
+client = redis.Redis()
+
 start_time = time.time()
-print(f'Comenzando la carga de {reg} registros.')
+print(f'Comenzando la carga de {reg:,} de registros.')
 for n in range(reg):
 	client.set('key:'+str(n), 'value:'+str(n))
 	if(n % percent == 0):
@@ -19,5 +16,5 @@ for n in range(reg):
 		print(f'  {n/percent*10}% en: {seconds} segundos')
 
 seconds = (time.time() - start_time)
-print(f'{reg} registros en: {seconds} segundos\n')
+print(f'{reg:,} registros en: {seconds:.6} segundos\n')
 
