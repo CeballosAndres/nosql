@@ -11,7 +11,6 @@ def redis_pro(first, last):
 
 if __name__ == '__main__':
     reg = 1_000_000
-    workers = 4
     pipe_width = 10_000
     start_time = time.time()
 
