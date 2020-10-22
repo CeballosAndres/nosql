@@ -2,10 +2,10 @@ import multiprocessing as mp
 import redis
 import time 
 
-def redis_pro():
+def redis_pro(ran):
     client = redis.Redis()
     with client.pipeline() as pipe:
-        for n in range(10000):
+        for n in range(ran):
             pipe.set('key:'+str(n), 'value:'+str(n))
         pipe.execute()
 
@@ -18,8 +18,8 @@ if __name__ == '__main__':
     print(f'Comenzando la carga de {reg:,} registros.')
     
     jobs = []
-    for i in range(100):
-        p = mp.Process(target=redis_pro)
+    for i in range(1):
+        p = mp.Process(target=redis_pro, args=(100,))
         jobs.append(p)
         p.start()
 
