@@ -18,7 +18,7 @@ def execute(sql):
 
 
 if __name__ == '__main__':
-	reg = 1_000
+	reg = 1_000_000
 	percent = reg / 10
 	
 	execute("DROP TABLE IF EXISTS users")
@@ -36,7 +36,7 @@ if __name__ == '__main__':
 		cursor.execute(sql, val)
 		if(n % percent == 0):
 			seconds = (time.time() - start_time)
-			print(f'  {n/percent*10}% en: {seconds} segundos')
+			print(f'  {n/percent*10}% en: {seconds:.6} segundos')
 	db.commit()
 
 	seconds = (time.time() - start_time)
