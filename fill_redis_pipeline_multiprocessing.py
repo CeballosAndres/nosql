@@ -11,16 +11,16 @@ def redis_pro(first, last):
 
 if __name__ == '__main__':
     reg = 1_000_000
-    workers = 16
+    workers = 4
     pipe_width = 10_000
     start_time = time.time()
 
     print(f'Comenzando la carga de {reg:,} registros.')
     
     jobs = []
-    for i in range(int((reg/pipe_width)+1)):
-        first = (i-1) * pipe_width
-        last = i * pipe_width
+    for i in range(1, int((reg/pipe_width)+1)):
+        first = ((i-1) * pipe_width) + 1
+        last = (i * pipe_width) + 1
         p = mp.Process(target=redis_pro, args=(first, last))
         jobs.append(p)
         p.start()
