@@ -11,7 +11,7 @@ def redis_pro(first, last):
 
 if __name__ == '__main__':
     reg = 1_000_000
-    pipe_width = 10_000
+    pipe_width = 100_000
     start_time = time.time()
 
     print(f'Comenzando la carga de {reg:,} registros.')

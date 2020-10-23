@@ -15,20 +15,27 @@ if __name__ == "__main__":
     conn = db.redis_conn()
     start_time = time.time()
     result = conn.get(val)
-    
+
     seconds = (time.time() - start_time)
     print(f"  Se obtuvo {result} en {seconds} segundos\n")
 
-    # # 10 claves
-    # start_time = time.time()
-    # print(f"\nObteniendo 10 clave aleatorias:")
-    # for n in range(10):   
-    #     val = get_key()
-    #     sql = "SELECT password FROM users WHERE username='"+val+"'"
-    #     cursor.execute(sql)
-    #     result = cursor.fetchone()
-    #     print(f'  {val} - {result[0]}')
-    # seconds = (time.time() - start_time)
-    # print(f"En {seconds} segundos\n")
+    # 10 claves
+    start_time = time.time()
+    print(f"\nObteniendo 10 clave aleatorias:")
+    for n in range(10):   
+        val = get_key()
+        result = conn.get(val)
+        print(f'  {val} - {result}')
+    seconds = (time.time() - start_time)
+    print(f"En {seconds} segundos\n")
 
+    values = []
+    for n in range(10):
+        val = get_key()
+        values.append(val)
 
+    start_time = time.time()
+    result = conn.mget(values)
+
+    seconds = (time.time() - start_time)
+    print(f"Haciendo uso de mget se obtienen: {result} en {seconds} segundos\n")
