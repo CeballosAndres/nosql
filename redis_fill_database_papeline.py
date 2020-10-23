@@ -1,10 +1,10 @@
-import redis
 import time 
+import db
 
 reg = 1_000_000
 
 # Connect to redis
-client = redis.Redis()
+client = db.redis_conn()
 
 start_time = time.time()
 
@@ -12,7 +12,7 @@ print(f'Comenzando la carga de {reg:,} registros.')
 
 with client.pipeline() as pipe:
     for n in range(reg):
-        pipe.set('key:'+str(n), 'value:'+str(n))
+        pipe.set('KEY:'+str(n), 'VALUE:'+str(n))
     pipe.execute()
 
 seconds = (time.time() - start_time)

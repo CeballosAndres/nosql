@@ -1,23 +1,17 @@
-import redis
-from mysql import connector
 from mysql.connector import errorcode
+import db
 
 # connect to redis
-client = redis.Redis(
-        host = 'localhost',
-        port = 6379
-        )
-
+client = db.redis_conn()
 # set a key
 client.set('test-redis', 'Redis OK')
-
 # get a value
 value = client.get('test-redis')
 print(value)
 
 
 try:
-	db_connection = connector.connect(host='localhost', user='root', password='nosql', database='test_db')
+	db_connection = db.mysql_conn()
 	print("Database connection made!")
 except connector.Error as error:
 	if error.errno == errorcode.ER_BAD_DB_ERROR:

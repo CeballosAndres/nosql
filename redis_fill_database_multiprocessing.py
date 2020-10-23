@@ -1,12 +1,12 @@
 import multiprocessing as mp
-import redis
 import time 
+import db
 
 def redis_pro(first, last):
-    client = redis.Redis()
+    client = db.redis_conn()
     with client.pipeline() as pipe:
         for n in range(first, last):
-            pipe.set('key:'+str(n), 'value:'+str(n))
+            pipe.set('KEY:'+str(n), 'VALUE:'+str(n))
         pipe.execute()
 
 if __name__ == '__main__':
