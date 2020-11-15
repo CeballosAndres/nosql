@@ -2,7 +2,7 @@ version: '3'
 services:
     redis:
         image: redis:latest
-        container_name: redis-db
+        container_name: redis
         restart: always
         network_mode: "host"
         ports:
@@ -13,11 +13,45 @@ services:
 
     mysql:
         image: mysql
-        container_name: mysql-db
+        container_name: mysql
         restart: always
         network_mode: "host"
         environment:
             MYSQL_ROOT_PASSWORD: nosql
             MYSQL_DATABASE: test_db
         ports:
-            - "3306:3306"
+            - 3306:3306
+
+    cassandra1:
+        image: cassandra:latest
+        container_name: cassandra1
+        restart: always
+        network_mode: "host"
+        ports:
+            - 9042:9042
+        volumes:
+            - /home/andres/nosql/cassandra/node1:/var/lib/cassandra/data
+        environment:
+            #- CASSANDRA_START_RPC=true
+            - CASSANDRA_CLUSTER_NAME=MyCluster
+            - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+            - CASSANDRA_DC=datacenter1
+
+    cassandra2:
+        image: cassandra:latest
+        container_name: cassandra2
+        restart: always
+        #network_mode: "host"
+        ports:
+            - 9043:9042
+        volumes:
+            - /home/andres/nosql/cassandra/node2:/var/lib/cassandra/data
+        # command: bash -c 'sleep 60;  /docker-entrypoint.sh cassandra -f'
+        depends_on:
+            - cassandra1
+        environment:
+            #- CASSANDRA_START_RPC=true
+            - CASSANDRA_CLUSTER_NAME=MyCluster
+            - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+            - CASSANDRA_DC=datacenter1
+            - CASSANDRA_SEEDS=192.168.1.99
