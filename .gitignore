@@ -1,6 +1,7 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,redis
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,redis
+docker/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -8,7 +9,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-docker/
 # C extensions
 *.so
 
@@ -149,3 +149,5 @@ dmypy.json
 *.rdb
 
 # End of https://www.toptal.com/developers/gitignore/api/python,redis
+#
+.DS_Store

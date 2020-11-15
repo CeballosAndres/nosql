@@ -1,5 +1,6 @@
 import redis
 from mysql import connector
+from cassandra.cluster import Cluster
 
 records = 1_000_000 
 
@@ -17,3 +18,7 @@ def mysql_conn():
 		password='nosql',
 		database='test_db')
 	return db_connection
+
+def cassandra_conn():
+	cluster = Cluster(['0.0.0.0'], port=9042)
+	return cluster.connect('CityInfo', wait_for_all_pools=True)

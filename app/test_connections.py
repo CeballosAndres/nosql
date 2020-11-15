@@ -9,7 +9,7 @@ client.set('test-redis', 'Redis OK')
 value = client.get('test-redis')
 print(value)
 
-
+# Test connection with mysql
 try:
 	db_connection = db.mysql_conn()
 	print("Database connection made!")
@@ -22,3 +22,10 @@ except connector.Error as error:
 		print(error)
 else:
 	db_connection.close()
+
+# Test connection with cassandra cluster
+session = db.cassandra_conn()
+#session.execute('USE CityInfo')
+rows = session.execute('SELECT * FROM users')
+for row in rows:
+	print(row.age, row.name, row.username)
