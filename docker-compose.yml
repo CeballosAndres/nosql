@@ -47,7 +47,7 @@ services:
         ports:
             - 9043:9042
         volumes:
-            - /home/andres/nosql/cassandra/node2:/var/lib/cassandra/data
+            - /home/andres/nosql/docker/cassandra/node2:/var/lib/cassandra/data
         # command: bash -c 'sleep 60;  /docker-entrypoint.sh cassandra -f'
         depends_on:
             - cassandra1
