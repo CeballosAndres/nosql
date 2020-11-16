@@ -16,6 +16,8 @@ services:
         container_name: mysql
         restart: always
         network_mode: "host"
+        volumes:
+            - /home/andres/nosql/docker/mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: nosql
             MYSQL_DATABASE: test_db
@@ -30,7 +32,7 @@ services:
         ports:
             - 9042:9042
         volumes:
-            - /home/andres/nosql/cassandra/node1:/var/lib/cassandra/data
+            - /home/andres/nosql/docker/cassandra/node1:/var/lib/cassandra/data
         environment:
             #- CASSANDRA_START_RPC=true
             - CASSANDRA_CLUSTER_NAME=MyCluster
