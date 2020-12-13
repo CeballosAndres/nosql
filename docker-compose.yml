@@ -57,3 +57,13 @@ services:
             - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
             - CASSANDRA_DC=datacenter1
             - CASSANDRA_SEEDS=192.168.1.99
+
+    mongodb:
+        image: mongo:latest
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: nosql
+            MONGO_INITDB_ROOT_PASSWORD: test_db
+        ports:
+          - 27017:27017
+        volumes:
+          - /home/andres/nosql/docker/mongodb:/data/db
