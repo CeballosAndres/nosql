@@ -21,7 +21,6 @@ def main():
     print(f"Creando espacio de trabajo {KEYSPACE}...")
     session.execute("""
         CREATE KEYSPACE %s
-        WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '2' }
         """ % KEYSPACE)
 
     print(f"Estableciendo espacio de trabajo {KEYSPACE}...")
