@@ -2,7 +2,7 @@ import redis
 from mysql import connector
 from cassandra.cluster import Cluster
 
-records = 10
+records = 10_000
 
 def redis_conn():
 	client = redis.Redis(

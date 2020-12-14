@@ -24,7 +24,7 @@ def insert_to_mysql(data):
     execute("""CREATE TABLE usuario (
 			id int NOT NULL PRIMARY KEY,
 			usuario varchar(45),
-			nombre varchar(45),
+			nombre varchar(100),
 			direccion varchar(200),
 			email varchar(55),
 			descripcion varchar(55),
@@ -83,7 +83,6 @@ def insert_to_mysql(data):
     conn = db.mysql_conn()
     cursor = conn.cursor()
 
-    print(f'Comenzando la carga de {reg:,} de registros.')
     user_id = 0
     tweet_id = 0
     comment_id = 0
@@ -121,7 +120,7 @@ def insert_to_mysql(data):
             tweet_id += 1
         user_id += 1
 
-    conn.commit()
+        conn.commit()
 
 
 def create_data(seed=4000, tweets=10, comments=10):
@@ -171,17 +170,21 @@ def insert_to_mongo(registros):
 if __name__ == "__main__":
     registros = []
 
-    print("Generando los datos.")
+    print(f"Iniciando con la generación de {reg:,} usuarios.")
+    print("Cada usuario con 10 tweets, y cada tweet con 10 comentarios.")
+    start_time = time.time()
     for i in range(reg):
         registros.append(create_data(seed=i, tweets=10, comments=10))
+    seconds = (time.time() - start_time)
+    print(f' {reg:,} usuarios generados en: {seconds:.6} segundos\n')
 
-    print(f'MONGO: Comenzando la carga de {reg:,} de registros.')
+    print(f'MONGO: Comenzando la carga de {reg:,} de usuarios.')
     start_time = time.time()
     insert_to_mongo(registros)
     seconds = (time.time() - start_time)
     print(f' {reg:,} registros en: {seconds:.6} segundos\n')
 
-    print(f'MySQL: Comenzando la carga de {reg:,} de registros.')
+    print(f'MySQL: Comenzando la carga de {reg:,} de usuarios.')
     start_time = time.time()
     insert_to_mysql(registros)
     seconds = (time.time() - start_time)
