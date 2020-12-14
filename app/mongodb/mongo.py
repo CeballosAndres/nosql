@@ -127,8 +127,8 @@ def create_data(seed=4000, tweets=10, comments=10):
     fake = Faker('es_MX')
     Faker.seed(seed)
     tweets_dic = []
-    comments_dic = []
     for _ in range(tweets):
+        comments_dic = []
         for _ in range(comments):
             comments_dic.append(
                 {
