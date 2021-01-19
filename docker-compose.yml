@@ -70,3 +70,20 @@ services:
           - 27017:27017
         volumes:
           - /home/andres/nosql/docker/mongodb:/data/db
+
+
+    neo4j:
+        image: neo4j:latest
+        container_name: neo4j
+        network_mode: "host"
+        restart: always
+        environment:
+            NEO4J_AUTH: neo4j/test_db
+        ports:
+          - 7474:7474
+          - 7687:7687
+        volumes:
+          - /home/andres/nosql/docker/nwo4j/data:/data
+          - /home/andres/nosql/docker/nwo4j/logs:/logs
+          - /home/andres/nosql/docker/nwo4j/import:/var/neo4j/import
+          - /home/andres/nosql/docker/nwo4j/plugins:/plugins
