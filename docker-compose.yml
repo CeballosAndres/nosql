@@ -61,6 +61,7 @@ services:
     mongodb:
         image: mongo:latest
         container_name: mongodb
+        network_mode: "host"
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: nosql
