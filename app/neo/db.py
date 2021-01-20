@@ -1,6 +1,6 @@
 from mysql import connector
 
-records = 10
+records = 100_000
 
 def mysql_conn():
 	db_connection = connector.connect(
